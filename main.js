@@ -4,11 +4,13 @@ var config = {
     type: Phaser.CANVAS,
     parent: 'phaser-example',
     backgroundColor: '#ffffff',
+    autoCenter: Phaser.Scale.CENTER_BOTH,
     scene: {
         create: create,
         update: update
     }
 };
+
 
 //  dwitter globals
 
@@ -43,11 +45,13 @@ function u (t)
 function create ()
 {
     var canvasTexture = this.textures.createCanvas('dwitter', 1920, 1080);
+    
 
     c = canvasTexture.getSourceImage();
     x = c.getContext('2d');
 
     this.add.image(0, 0, 'dwitter').setOrigin(0).setScale(0.5);
+    
 }
 
 function update ()
@@ -62,4 +66,8 @@ function update ()
     frame++;
 
     u(time);
+    
 }
+window.addEventListener('resize', () => {
+    game.resize(window.innerWidth, window.innerHeight);
+});
