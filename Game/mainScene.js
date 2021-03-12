@@ -9,7 +9,6 @@ class mainScene extends Phaser.Scene {
     create()
     {
     // define objects
-    console.log('hello')
     this.add.text(50, 50, 'start menu')
     }
     update()
