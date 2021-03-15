@@ -6,8 +6,11 @@ window.onload=function()
 {
 var config = {
     type: Phaser.AUTO,
-    width: 1600,
-    height: 800,
+    scale: {
+        mode: Phaser.Scale.RESIZE,
+        parent: 'phaser-example',
+        width: '100%',
+        height: '100%'},
     backgroundColor: "#5ce835",
     parent: 'phaser-game',
     scene: [mainScene]
