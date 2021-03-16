@@ -50,6 +50,7 @@ class mainScene extends Phaser.Scene {
             car.setVelocityY(0, 0);// stop car
         });
 
+        
         // Each node
         var points = [ // initialize point on road X and Y
             450, 600, 701, 596, 752, 527, 752, 293, 751, 150, 664, 110, 479, 117, 335, 105, 258, 184, 297, 286, 387, 275, 432, 244, 487, 328, 555, 309, 628, 226, 663, 375, 634, 487, 464, 424, 320, 401, 263, 490, 287, 587, 450, 600
