@@ -6,8 +6,7 @@ class mainScene extends Phaser.Scene {
     }
     
     
-    preload()
-    {
+    preload(){
     // load images or sounds
     this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png');
 
@@ -17,9 +16,7 @@ class mainScene extends Phaser.Scene {
     this.load.plugin('PathBuilder', "../assets/PathBuilder.js",'PathBuilder');
     }
     
-    create()
-    
-    {
+    create(){
     // define objects
     this.add.text(50, 50, 'start menu');
     this.add.image(400, 400, 'car1');
@@ -71,6 +68,8 @@ class mainScene extends Phaser.Scene {
         rotateToPath: true,
     });
     }
+
     update(){
+
     }
 }
