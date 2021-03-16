@@ -14,7 +14,6 @@ class mainScene extends Phaser.Scene {
     this.load.image('road', '../assets/road.png');
     this.load.image('car1', '../assets/audi.png');
     
-    this.load.plugin('PathBuilder', "../assets/PathBuilder.js",'PathBuilder');
     }
     
     create()
@@ -55,34 +54,25 @@ class mainScene extends Phaser.Scene {
 
     // 1. Each node
     var points = [
-        450, 600, 700, 600, 750, 500, 600, 455,
-        701, 338, 692, 190, 603, 76, 423, 41,
-        272, 78, 181, 186, 230, 328, 416, 395,
-        565, 327, 550, 202, 467, 149, 355, 164,
-        343, 254, 428, 303
-    ];
+        450, 600, 500, 600, 600, 600, 750, 500, 750, 300, 
+        750, 150,700, 100, 500, 150, 350, 100, 
+        275, 100,250, 200, 300, 275, 400, 250, 
+        450, 275, 500, 350, 550, 325, 650, 225, 
+        650, 475, 500, 450, 300, 400, 275, 500, 
+        275, 600, 450, 600];
 
          //2. Link each node
     var curve = new Phaser.Curves.Spline(points);
 
-         //3. Draw line (visualization not required) optional
-    var graphics = this.add.graphics();
-    graphics.lineStyle(1, 0xffffff, 0.5);
-    curve.draw(graphics, 128);
-    graphics.fillStyle(0xff0000, 0.5);
-    for (var i = 0; i < curve.points.length; i++) {
-        graphics.fillCircle(curve.points[i].x, curve.points[i].y, 4);
-    }
          //4. Create a racing car
     var lemming = this.add.follower(curve, 450, 600, 'car1').setScale(0.6);
 
        //5. Let racing car follow path
     lemming.startFollow({
-        duration: 10000,
+        duration: 17500,
         yoyo: false,
-        repeat: 0,
+        repeat: 1,
         rotateToPath: true,
-        verticalAdjust: true
     });
     }
     update(){
