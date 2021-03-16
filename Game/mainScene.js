@@ -52,7 +52,7 @@ class mainScene extends Phaser.Scene {
         car.setVelocityY(0, 0);
     });
 
-    // 1. Each node
+    // Each node
     var points = [
         450, 600, 500, 600, 600, 600, 750, 500, 750, 300, 
         750, 150,700, 100, 500, 150, 350, 100, 
@@ -61,13 +61,13 @@ class mainScene extends Phaser.Scene {
         650, 475, 500, 450, 300, 400, 275, 500, 
         275, 600, 450, 600];
 
-         //2. Link each node
+         // Link each node
     var curve = new Phaser.Curves.Spline(points);
 
          //4. Create a racing car
     var lemming = this.add.follower(curve, 450, 600, 'car1').setScale(0.6);
 
-       //5. Let racing car follow path
+       // Let racing car follow path
     lemming.startFollow({
         duration: 17500,
         yoyo: false,
