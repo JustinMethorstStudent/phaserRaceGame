@@ -11,8 +11,15 @@ var config = {
         parent: 'phaser-example',
         width: '100%',
         height: '100%'},
-    backgroundColor: "#5ce835",
+    backgroundColor: "#fff",
     parent: 'phaser-game',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false,
+            gravity: { y: 0 }
+        }
+    },
     scene: [mainScene]
 }
 
