@@ -14,6 +14,7 @@ class mainScene extends Phaser.Scene {
     this.load.image('road', '../assets/road.png');
     this.load.image('car1', '../assets/audi.png');
     
+    this.load.plugin('PathBuilder', "../assets/PathBuilder.js",'PathBuilder');
     }
     
     create()
@@ -54,12 +55,7 @@ class mainScene extends Phaser.Scene {
 
     // Each node
     var points = [
-        450, 600, 500, 600, 600, 600, 750, 500, 750, 300, 
-        750, 150,700, 100, 500, 150, 350, 100, 
-        275, 100,250, 200, 300, 275, 400, 250, 
-        450, 275, 500, 350, 550, 325, 650, 225, 
-        650, 475, 500, 450, 300, 400, 275, 500, 
-        275, 600, 450, 600];
+        450,600,701,596,752,527,752,293,751,150,664,110,479,117,335,105,258,184,297,286,387,275,432,244,487,328,555,309,628,226,663,375,634,487,464,424,320,401,263,490,287,587,450,600];
 
          // Link each node
     var curve = new Phaser.Curves.Spline(points);
