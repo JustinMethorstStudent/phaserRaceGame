@@ -28,17 +28,25 @@ class mainScene extends Phaser.Scene {
         this.add.image(500, 350, 'road').setScale(1.1);
 
         car = this.matter.add.image(450, 605, 'car1').setScale(0.6);
-        car.setFrictionAir(0.05);
+        car.setFrictionAir(0.1);
         car.setMass(10);
 
         this.matter.world.setBounds(200, 50, 600, 600);
 
 
         var points0 = [ // initialize point on road X and Y
-            450,600,550,600,650,600,750,550,750,450,750,350,750,250,750,150,650,100,550,150,450,100,350,100,250,150,250,250,350,300,450,250,500,350,600,250,650,300,650,400,600,450,500,450,400,400,300,400,250,450,250,550,350,600,450,600,450,600
+            450,600,550,600,650,600,750,550,750,450,750,350,750,
+            250,750,150,650,100,550,150,450,100,350,100,250,150,
+            250,250,350,300,450,250,500,350,600,250,650,300,650,
+            400,600,450,500,450,400,400,300,400,250,450,250,550,
+            350,600,450,600,450,600
         ];
         var points1 = [ // initialize point on road X and Y
-            450,600,550,600,650,600,750,550,750,450,730,345,758,244,752,134,650,100,540,122,450,100,335,91,250,150,250,250,350,300,440,240,504,344,600,250,658,258,662,359,638,470,532,468,436,406,324,385,268,452,269,556,350,600,450,600
+            450,600,550,600,650,600,750,550,750,450,730,345,758,
+            244,752,134,650,100,540,122,450,100,335,91,250,150,
+            250,250,350,300,440,240,504,344,600,250,658,258,662,
+            359,638,470,532,468,436,406,324,385,268,452,269,556,
+            350,600,450,600
         ];
         // choose path to take
         var point = Phaser.Math.Between(0, 1);
@@ -79,7 +87,6 @@ class mainScene extends Phaser.Scene {
         if (cursors.left.isDown)// turn car left
         {   
             Phaser.Physics.Matter.Matter.Body.setAngularVelocity(car.body, -0.02);
-
         }
         else if (cursors.right.isDown) // turn car right
         {
@@ -88,11 +95,11 @@ class mainScene extends Phaser.Scene {
     
         if (cursors.up.isDown) /// move car forward
         {
-            car.thrust(0.0025);
+            car.thrust(0.005);
         }
         else if (cursors.down.isDown) // reverse car 
         {
-            car.thrustBack(0.0020);
+            car.thrustBack(0.02);
         }
 
     }
