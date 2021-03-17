@@ -1,22 +1,16 @@
-var config = 
-{
-    type: Phaser.AUTO,
-    scale: {
-        mode: Phaser.Scale.RESIZE,
-        parent: 'phaser-example',
-        width: '100%',
-        height: '100%'},
-    backgroundColor: "#fff",
-    parent: 'menu',
-    scene: [preload, create]
-}
+class menuScene extends Phaser.Scene {
+
+    constructor() {
+        super('menuScene');
+    }
+
 preload()
 {
     //laden van plaatjes
 
-    this.load.image("playBtn", "./assets/play.png");
-    this.load.image("hndBtn", "./assets/handleiding.png");
-    this.load.image("car", "./assets/car.png");
+    this.load.image("playBtn", "../assets/play.png");
+    this.load.image("hndBtn", "../assets/handleiding.png");
+    this.load.image("car", "../assets/car.png");
 
 }
 create()
@@ -43,4 +37,4 @@ create()
     playBtn.on("pointerup",()=>{
         
     })
-}
+}}
