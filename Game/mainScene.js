@@ -45,12 +45,12 @@ class mainScene extends Phaser.Scene {
 
         if (point == 0) {
             // Link each point
-            var curve = new Phaser.Curves.Spline(points0);
-        } else {
+            var curve = new Phaser.Curves.Spline(points0);} 
+        else {
             // Link each point
-            var curve = new Phaser.Curves.Spline(points1);
-        }
-        console.log('chosen path = ', point)
+            var curve = new Phaser.Curves.Spline(points1);}
+    	console.log('chosen path = ', point)
+        
         // Create a racing car
         var lemming = this.add.follower(curve, 450, 600, 'car1').setScale(0.6);
         // choose car speed
