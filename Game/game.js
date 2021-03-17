@@ -9,10 +9,17 @@ var config = {
     backgroundColor: "#fff",
     parent: 'phaser-game',
     physics: {
-        default: 'arcade',
-        arcade: {
-            debug: false,
-            gravity: { y: 0 }}},
+        default: 'matter',
+        matter: {
+            debug: true,
+            gravity: {
+                x: 0,
+                y: 0
+            }
+        }
+    },
     scene: [mainScene]}
+    
+
 game = new Phaser.Game(config);
 }
