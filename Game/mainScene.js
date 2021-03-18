@@ -9,10 +9,10 @@ class mainScene extends Phaser.Scene {
     preload()
     {
     // load images or sounds
-    this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png');
 
-    this.load.image('road', '../assets/road.png');
-    this.load.image('car1', '../assets/audi.png');
+    // this.load.image('road', '../assets/road.png');
+        this.load.image('road', '../assets/RaceTracks/raceTrackFirst.png');
+        this.load.image('car1', '../assets/audi.png');
     
     }
     
@@ -22,7 +22,7 @@ class mainScene extends Phaser.Scene {
     // define objects
     this.add.text(50, 50, 'start menu');
     this.add.image(400, 400, 'car1');
-    this.add.image(500, 350, 'road').setScale(1.1);
+    this.add.image(700, 400, 'road').setScale(0.7);
 
     var car = this.physics.add.group({
         key: 'car1',})
@@ -53,7 +53,7 @@ class mainScene extends Phaser.Scene {
     });
 
     // Each node
-    var points = [
+    const points = [
         450, 600, 500, 600, 600, 600, 750, 500, 750, 300, 
         750, 150,700, 100, 500, 150, 350, 100, 
         275, 100,250, 200, 300, 275, 400, 250, 
