@@ -29,7 +29,7 @@ class mainScene extends Phaser.Scene {
         this.add.image(500, 350, 'road').setScale(0.5);
 
         car = this.matter.add.image(450, 605, 'car1').setScale(0.6);
-        car.setFrictionAir(0.1);
+        car.setFrictionAir(0.2);
         car.setMass(10);
 
         this.matter.world.setBounds(10, 50, 1000, 600);
@@ -40,7 +40,7 @@ class mainScene extends Phaser.Scene {
             250,750,150,650,100,550,150,450,100,350,100,250,150,
             250,250,350,300,450,250,500,350,600,250,650,300,650,
             400,600,450,500,450,400,400,300,400,250,450,250,550,
-            350,600,450,600,450,600
+            350,600,450,600
         ];
 
         // var points1 = [ // initialize point on road X and Y
@@ -77,14 +77,14 @@ class mainScene extends Phaser.Scene {
         // Create a racing car
         var lemming = this.add.follower(curve, 447,270, 'car1').setScale(0.6);
         // choose car speed
-        var duration = Phaser.Math.Between(16000, 16750);
+        var duration = Phaser.Math.Between(12500, 14000);
         // Let racing car follow path
         
         console.log('race duration = ', duration)
         lemming.startFollow({
             duration: duration,
             yoyo: false,
-            repeat: 1,
+            repeat: 2,
             rotateToPath: true,
         });
         	
@@ -92,25 +92,19 @@ class mainScene extends Phaser.Scene {
     }
 
     update() {
-
-        // get car colission
-        var point1 = car.getTopRight();
-        var point2 = car.getBottomRight();
-        // move colision to car position
-
         // get iputs
         if (cursors.left.isDown)// turn car left
         {   
-            Phaser.Physics.Matter.Matter.Body.setAngularVelocity(car.body, -0.02);
+            car.angle -= 3.3;
         }
         else if (cursors.right.isDown) // turn car right
         {
-            Phaser.Physics.Matter.Matter.Body.setAngularVelocity(car.body, 0.02);
+            car.angle += 3.3;
         }
     
         if (cursors.up.isDown) /// move car forward
         {
-            car.thrust(0.005);
+            car.thrust(0.025);
         }
         else if (cursors.down.isDown) // reverse car 
         {
