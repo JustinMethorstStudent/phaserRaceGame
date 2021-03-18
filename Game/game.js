@@ -1,9 +1,4 @@
-// const phaserGame = document.createElement('script');
-// phaserGame.setAttribute('src','//cdn.jsdelivr.net/npm/phaser@3.53.1/dist/phaser.js');
-// document.head.appendChild(phaserGame);
-var game;
-window.onload=function()
-{
+window.onload=function(){
 var config = {
     type: Phaser.AUTO,
     scale: {
@@ -14,14 +9,17 @@ var config = {
     backgroundColor: "#fff",
     parent: 'phaser-game',
     physics: {
-        default: 'arcade',
-        arcade: {
-            debug: false,
-            gravity: { y: 0 }
+        default: 'matter',
+        matter: {
+            debug: true,
+            gravity: {
+                x: 0,
+                y: 0
+            }
         }
     },
-    scene: [mainScene]
-}
+    scene: [mainScene]}
+    
 
 game = new Phaser.Game(config);
 }
