@@ -5,7 +5,7 @@ var config = {
         mode: Phaser.Scale.RESIZE,
         parent: 'phaser-example',
         width: '100%',
-        height: '100%'},
+        height: '100%=='},
     backgroundColor: "#fff",
     parent: 'phaser-game',
     physics: {
