@@ -30,21 +30,24 @@ class mainScene extends Phaser.Scene {
     preload() {
         //this.load.image('road', '../assets/road.png');
         this.load.image('road', '../assets/raceTracks/raceTrackFirst.png');
-        this.load.image('car1', '../assets/audi.png');
         this.load.image('car2', '../assets/player.png');
         this.load.image('car3', '../assets/Black_viper.png');
-        this.load.image('car4', '../assets/car.png');
         this.load.image('finish', '../assets/image.png');
         this.load.image('redwin', '../assets/Red.png');
         this.load.image('orangewin', '../assets/Orange.png');
+        this.load.image('car1', '../assets/audi.png');
+        this.load.image('car4', '../assets/car.png');
 
     }
 
     create() {
         // define objects
-        //localStorage.removeItem('value');
+        localStorage.removeItem('value');
 
         this.add.image(500, 350, 'road').setScale(0.5);
+
+        lemming = this.add.follower(curve, 450,300, 'car3').setScale(0.22);
+        lemming1 = this.add.follower(curve1, 450,280, 'car2').setScale(0.28);
         
         finish = this.matter.add.sprite(450,270, 'finish').setScale(0.1).setStatic(true).setSensor(true);
         finish.setMass(10);
@@ -87,8 +90,6 @@ class mainScene extends Phaser.Scene {
             var curve1 = new Phaser.Curves.Spline(points1)
             var curve2 = new Phaser.Curves.Spline(points2)
         // Create a racing car
-        lemming = this.add.follower(curve, 450,300, 'car3').setScale(0.22);
-        lemming1 = this.add.follower(curve1, 450,280, 'car2').setScale(0.28);
         lemming2 = this.add.follower(curve2, 450, -100, 'orangewin').setScale(1);
         lemming3 = this.add.follower(curve2, 450, -100, 'redwin').setScale(1);
         // choose car speed
