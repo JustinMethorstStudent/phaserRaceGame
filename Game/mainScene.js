@@ -12,6 +12,12 @@ var lemming3;
 var length;
 var length1;
 var text;
+var scoreText;
+var highScoreText;
+var score = 0;
+var highScore = 0;
+var oldScore;
+var oldHighScore;
 
 class mainScene extends Phaser.Scene {
     
@@ -36,6 +42,7 @@ class mainScene extends Phaser.Scene {
 
     create() {
         // define objects
+        //localStorage.removeItem('value');
 
         this.add.image(500, 350, 'road').setScale(0.5);
         
@@ -50,7 +57,17 @@ class mainScene extends Phaser.Scene {
         car1.setFrictionAir(0.2);
         car1.setMass(10);
 
-        text = this.add.text(32, 32);
+        text = this.add.text(20, 100);
+        scoreText = this.add.text(500, 100);
+        highScoreText = this.add.text(300, 100);
+
+
+        oldScore = localStorage.getItem('oldvalue');
+        console.log(oldScore);
+
+        oldHighScore = localStorage.getItem('value');
+        highScoreText.setText('High Score: ' + oldHighScore);
+
 
         var points0 = [450,290,550,250,650,250,750,250,750,150,850,
             150,850,250,850,350,850,450,830,533,750,550,700,500,700,
@@ -63,7 +80,7 @@ class mainScene extends Phaser.Scene {
             382,571,438,554,564,456,573,354,541,250,550,150,544,72,
             500,146,428,150,350,150,250,187,161,339,158,350,250,450,290];
 
-        var points2 = [450, 0, 450, 1000];
+        var points2 = [450, 0, 450, 2000];
 
             // Link each point
             var curve = new Phaser.Curves.Spline(points0);
@@ -114,10 +131,16 @@ class mainScene extends Phaser.Scene {
                     if (redcount == 4){
                         if(orangecount < 4){
                             lemming3.startFollow({
-                                duration: 5000,
+                                duration: 10000,
                                 yoyo: false,
                                 repeat: 0,
                             });
+                            start = false;
+                            localStorage.setItem('oldvalue', score);
+                            if(oldScore > score){
+                                highScoreText.setText('High Score: ' + highScore);
+                                localStorage.setItem('value', highScore);
+                            }
                         }
                     }
                   }
@@ -127,22 +150,37 @@ class mainScene extends Phaser.Scene {
                     if (orangecount == 4){
                         if(redcount < 4){
                             lemming2.startFollow({
-                                duration: 5000,
+                                duration: 10000,
                                 yoyo: false,
                                 repeat: 0,
                             });
+                            start = false;
+                            localStorage.setItem('oldvalue', score);
+                            if(oldScore > score){
+                                highScoreText.setText('High Score: ' + highScore);
+                                localStorage.setItem('value', highScore);
+                            }
                     }}
                 }
 
               }
               timedEvent = this.time.delayedCall(3000, onEvent, [], this);
+              score = 0;
     }
 
     update() {
-        text.setText('Event.progress: ' + timedEvent.getProgress().toString().substr(0, 4));
+        text.setText('Game starts on on 1: ' + timedEvent.getProgress().toString().substr(0, 3));
+        scoreText.setText('Score: ' + score);
+
+
 
         if(start == true){
-                    // get iputs
+            ++score;
+            highScore = score;
+
+
+            
+        // get iputs
         if (cursors.left.isDown)// turn car left
         {   
             car.angle -= 3.9;
@@ -161,7 +199,6 @@ class mainScene extends Phaser.Scene {
             car.thrustBack(0.02);
         }
 
-       
         if (keys.left.isDown)// turn car left
         {   
             car1.angle -= 3.9;
@@ -179,9 +216,9 @@ class mainScene extends Phaser.Scene {
         {
             car1.thrustBack(0.02);
         }
-
         }
     }
+    
     
 }
 function onEvent ()

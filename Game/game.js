@@ -5,7 +5,7 @@ window.onload=function(){
             mode: Phaser.Scale.RESIZE,
             parent: 'phaser-example',
             width: '100%',
-            height: '100%=='},
+            height: '100%'},
         backgroundColor: "#fff",
         parent: 'phaser-game',
         physics: {
@@ -18,6 +18,10 @@ window.onload=function(){
                 }
             }
         },
+        fps: {
+          target: 60,
+          forceSetTimeOut: true
+          },
         scene: [mainScene],
         plugins: {
             scene: [
@@ -29,5 +33,6 @@ window.onload=function(){
             ]
           }
         };
+      
     game = new Phaser.Game(config);
     }
