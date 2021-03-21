@@ -1,16 +1,10 @@
 var car;
 <<<<<<< HEAD
-<<<<<<< HEAD
 var car1;
 var cursors;
 var keys;
 var finish
 
-=======
-var tracker1;
-var tracker2;
-var cursors;
->>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
 =======
 var tracker1;
 var tracker2;
@@ -123,9 +117,6 @@ class mainScene extends Phaser.Scene {
         var lemming = this.add.follower(curve, 447,270, 'car1').setScale(0.6);
         // choose car speed
         var duration = Phaser.Math.Between(12500, 14000);
-<<<<<<< HEAD
->>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
-=======
 >>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
         // Let racing car follow path
         var length1 = duration+add1
