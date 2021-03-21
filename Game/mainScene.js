@@ -1,8 +1,14 @@
 var car;
+<<<<<<< HEAD
 var car1;
 var cursors;
 var keys;
 var finish
+=======
+var tracker1;
+var tracker2;
+var cursors;
+>>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
 
 class mainScene extends Phaser.Scene {
     
@@ -39,6 +45,7 @@ class mainScene extends Phaser.Scene {
         
         this.matter.world.setBounds(10, 50, 1000, 600);
 
+<<<<<<< HEAD
         var points0 = [ // initialize point on road X and Y
             450,600,550,600,650,600,750,550,750,450,750,350,750,
             250,750,150,650,100,550,150,450,100,350,100,250,150,
@@ -47,6 +54,10 @@ class mainScene extends Phaser.Scene {
             350,600,450,600
         ];
         var points1 = [ // initialize point on road X and Y
+=======
+
+        var points0 = [ // initialize point on road X and Y
+>>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
             450,600,550,600,650,600,750,550,750,450,750,350,750,
             250,750,150,650,100,550,150,450,100,350,100,250,150,
             250,250,350,300,450,250,500,350,600,250,650,300,650,
@@ -72,6 +83,16 @@ class mainScene extends Phaser.Scene {
         var add = Phaser.Math.Between(0, 1500);
         var add1 = Phaser.Math.Between(0, 1500);
 
+<<<<<<< HEAD
+=======
+        // var points1 = [ // initialize point on road X and Y
+        //     450,600,550,600,650,600,750,550,750,450,730,345,758,
+        //     244,752,134,650,100,540,122,450,100,335,91,250,150,
+        //     250,250,350,300,440,240,504,344,600,250,658,258,662,
+        //     359,638,470,532,468,436,406,324,385,268,452,269,556,
+        //     350,600,450,600
+        // ];
+>>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
 
         var points1 = [447,270,447,270,563,273,666,266,732,268,
             756,240,764,177,773,142,808,134,835,148,836,175,840,
@@ -100,7 +121,10 @@ class mainScene extends Phaser.Scene {
         var lemming = this.add.follower(curve, 447,270, 'car1').setScale(0.6);
         // choose car speed
         var duration = Phaser.Math.Between(12500, 14000);
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of bf611d5 (Little Changes to some files and added some in preperation)
         // Let racing car follow path
         console.log('race duration = ', duration)
         lemming.startFollow({
