@@ -42,12 +42,9 @@ class mainScene extends Phaser.Scene {
 
     create() {
         // define objects
-        localStorage.removeItem('value');
-
+        //localStorage.removeItem('value');
         this.add.image(500, 350, 'road').setScale(0.5);
 
-        lemming = this.add.follower(curve, 450,300, 'car3').setScale(0.22);
-        lemming1 = this.add.follower(curve1, 450,280, 'car2').setScale(0.28);
         
         finish = this.matter.add.sprite(450,270, 'finish').setScale(0.1).setStatic(true).setSensor(true);
         finish.setMass(10);
@@ -71,7 +68,7 @@ class mainScene extends Phaser.Scene {
         oldHighScore = localStorage.getItem('value');
         highScoreText.setText('High Score: ' + oldHighScore);
 
-
+        // place points on page
         var points0 = [450,290,550,250,650,250,750,250,750,150,850,
             150,850,250,850,350,850,450,830,533,750,550,700,500,700,
             400,600,400,583,499,548,564,444,560,350,550,250,550,117,
@@ -92,6 +89,8 @@ class mainScene extends Phaser.Scene {
         // Create a racing car
         lemming2 = this.add.follower(curve2, 450, -100, 'orangewin').setScale(1);
         lemming3 = this.add.follower(curve2, 450, -100, 'redwin').setScale(1);
+        lemming = this.add.follower(curve, 450,300, 'car3').setScale(0.22);
+        lemming1 = this.add.follower(curve1, 450,280, 'car2').setScale(0.28);
         // choose car speed
         var duration = Phaser.Math.Between(14000, 15000);
         var add = Phaser.Math.Between(0, 1500);
@@ -101,17 +100,18 @@ class mainScene extends Phaser.Scene {
         length1 = duration+add1
         length  = duration+add
         console.log('race duration = ', length1, length)
-        	
+        	// get input arow keys
         cursors = this.input.keyboard.createCursorKeys();
 
+        // get input WASD
         keys = this.input.keyboard.addKeys(
             {up:Phaser.Input.Keyboard.KeyCodes.W,
             down:Phaser.Input.Keyboard.KeyCodes.S,
             left:Phaser.Input.Keyboard.KeyCodes.A,
             right:Phaser.Input.Keyboard.KeyCodes.D});
-
+                // on colision 
             this.matterCollision.addOnCollideStart({
-                objectA: car,
+                objectA: car,// check what is coliding
                 objectB: finish,
                 callback: () => chooseWinner('red')
               });
@@ -123,9 +123,8 @@ class mainScene extends Phaser.Scene {
 
               var redcount = 0;
               var orangecount = 0;
-
+              // choose winner based on laps over finish
               function chooseWinner(winner){
-
                   if(winner == 'red'){
                     ++redcount;
                     console.log(redcount);
@@ -138,7 +137,7 @@ class mainScene extends Phaser.Scene {
                             });
                             start = false;
                             localStorage.setItem('oldvalue', score);
-                            if(oldScore > score){
+                            if(oldHighScore > score){
                                 highScoreText.setText('High Score: ' + highScore);
                                 localStorage.setItem('value', highScore);
                             }
@@ -157,7 +156,7 @@ class mainScene extends Phaser.Scene {
                             });
                             start = false;
                             localStorage.setItem('oldvalue', score);
-                            if(oldScore > score){
+                            if(oldHighScore > score){
                                 highScoreText.setText('High Score: ' + highScore);
                                 localStorage.setItem('value', highScore);
                             }
