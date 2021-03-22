@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaceGame</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.53.1/dist/phaser.js"></script>
+    <!-- <script src="menuScene.js"></script> -->
+</head>
+<body>
+<div id="phaser-game"></div>
+<script>
+
+    let config = {
+        type: Phaser.AUTO,
+        width: 1008,
+        height: 686,
+        scene: {
+            preload: preload,
+            create: create,
+            init: init
+        }
+    };
+
+
+    let game = new Phaser.Game(config);
+
+    function init() {
+        this.cursors = this.input.keyboard.createCursorKeys();
+    }
+
+    function preload() {
+        this.load.image("menuBackground", "../assets/menuScene/menuBackGround.png");
+        this.load.image("playButton", "../assets/menuScene/playButton.png");
+        this.load.image("audiCar", "../assets/menuScene/audi.png");
+
+        this.load.audio("titleRace", "../assets/menuScene/titleRace.mp3")
+
+
+    };
+
+    function create(){
+
+        this.add.image(0, 0, "menuBackground").setDepth(0).setOrigin(0);
+        let playButton = this.add.image(400,150, "playButton").setDepth(1).setOrigin(0).setScale(0.25);
+        let manualButton = this.add.text(450, 280, "Manual", {fill: '#0f0'}).setDepth(1).setOrigin(0);
+
+
+
+        // this.sounc.pauseOnBlur = false;
+        this.sound.play("titleRace", {
+            loop: true
+        })
+
+        //add cursor
+        let audiCar = this.add.image(100,100, "audiCar").setDepth(2);
+        audiCar.setVisible(false);
+
+        //button click function
+        function actionOnClick() {
+
+        }
+
+        //manualButton
+        manualButton.setInteractive();
+        manualButton.on("pointerover", ()=>{
+            audiCar.setVisible(true);
+            audiCar.x = manualButton.x - manualButton.width;
+            audiCar.y = manualButton.y;
+            console.log("manual on");
+        });
+
+        manualButton.on("pointerout", ()=>{
+            audiCar.setVisible(false);
+            console.log("manual off");
+        });
+
+        manualButton.on("pointerup", ()=>{
+            console.log("manual click");
+        });
+
+        //playButton
+
+        playButton.setInteractive();
+        playButton.on("pointerover", ()=>{
+            audiCar.setVisible(true);
+            audiCar.x = playButton.x - playButton.width;
+            audiCar.y = playButton.y;
+            console.log("hovah on");
+        });
+
+        playButton.on("pointerout", ()=>{
+            audiCar.setVisible(false);
+            console.log("hovah off");
+        });
+
+        playButton.on("pointerup", ()=>{
+            console.log("Let's race!");
+        });
+
+    };
+
+
+
+    function update() {
+
+    };
+
+</script>
+</body>
+</html>

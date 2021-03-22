@@ -1,23 +1,23 @@
-var car;
-var car1;
-var cursors;
-var keys;
-var finish;
-var timedEvent;
-var start = false;
-var lemming;
-var lemming1;
-var lemming2;
-var lemming3;
-var length;
-var length1;
-var text;
-var scoreText;
-var highScoreText;
-var score = 0;
-var highScore = 0;
-var oldScore;
-var oldHighScore;
+let car;
+let car1;
+let cursors;
+let keys;
+let finish;
+let timedEvent;
+let start = false;
+let lemming;
+let lemming1;
+let lemming2;
+let lemming3;
+let length;
+let length1;
+let text;
+let scoreText;
+let highScoreText;
+let score = 0;
+let highScore = 0;
+let oldScore;
+let oldHighScore;
 
 class mainScene extends Phaser.Scene {
     
@@ -69,32 +69,32 @@ class mainScene extends Phaser.Scene {
         highScoreText.setText('High Score: ' + oldHighScore);
 
         // place points on page
-        var points0 = [450,290,550,250,650,250,750,250,750,150,850,
+        let points0 = [450,290,550,250,650,250,750,250,750,150,850,
             150,850,250,850,350,850,450,830,533,750,550,700,500,700,
             400,600,400,583,499,548,564,444,560,350,550,250,550,117,
             554,72,501,136,450,150,350,150,250,165,170,250,150,340,
             167,350,250,447,290];
 
-        var points1 = [450,290,549,268,648,259,750,250,761,146,850,
+        let points1 = [450,290,549,268,648,259,750,250,761,146,850,
             150,850,250,850,350,850,450,817,530,724,526,700,450,629,
             382,571,438,554,564,456,573,354,541,250,550,150,544,72,
             500,146,428,150,350,150,250,187,161,339,158,350,250,450,290];
 
-        var points2 = [450, 0, 450, 2000];
+        let points2 = [450, 0, 450, 2000];
 
             // Link each point
-            var curve = new Phaser.Curves.Spline(points0);
-            var curve1 = new Phaser.Curves.Spline(points1)
-            var curve2 = new Phaser.Curves.Spline(points2)
+            let curve = new Phaser.Curves.Spline(points0);
+            let curve1 = new Phaser.Curves.Spline(points1)
+            let curve2 = new Phaser.Curves.Spline(points2)
         // Create a racing car
         lemming2 = this.add.follower(curve2, 450, -100, 'orangewin').setScale(1);
         lemming3 = this.add.follower(curve2, 450, -100, 'redwin').setScale(1);
         lemming = this.add.follower(curve, 450,300, 'car3').setScale(0.22);
         lemming1 = this.add.follower(curve1, 450,280, 'car2').setScale(0.28);
         // choose car speed
-        var duration = Phaser.Math.Between(14000, 15000);
-        var add = Phaser.Math.Between(0, 1500);
-        var add1 = Phaser.Math.Between(0, 1500);
+        let duration = Phaser.Math.Between(14000, 15000);
+        let add = Phaser.Math.Between(0, 1500);
+        let add1 = Phaser.Math.Between(0, 1500);
 
         // Let racing car follow path
         length1 = duration+add1
@@ -121,8 +121,8 @@ class mainScene extends Phaser.Scene {
                 callback: () => chooseWinner('orange')
               });
 
-              var redcount = 0;
-              var orangecount = 0;
+              let redcount = 0;
+              let orangecount = 0;
               // choose winner based on laps over finish
               function chooseWinner(winner){
                   if(winner == 'red'){

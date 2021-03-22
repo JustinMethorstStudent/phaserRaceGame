@@ -1,5 +1,5 @@
 window.onload=function(){
-    var config = {
+    let config = {
         type: Phaser.AUTO,
         scale: {
             mode: Phaser.Scale.RESIZE,
