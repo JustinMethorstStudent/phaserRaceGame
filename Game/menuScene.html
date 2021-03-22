@@ -47,6 +47,13 @@
         let playButton = this.add.image(400,150, "playButton").setDepth(1).setOrigin(0).setScale(0.25);
         let manualButton = this.add.text(450, 280, "Manual", {fill: '#0f0'}).setDepth(1).setOrigin(0);
 
+        playButton.on('pointerup', openLink, this);
+
+        //Link open
+        function openLink(){
+            let url = "http://methorstdevelopment.nl/Game/main.html";
+            window.location.href=url;
+        }
 
 
         // this.sounc.pauseOnBlur = false;
@@ -57,11 +64,6 @@
         //add cursor
         let audiCar = this.add.image(100,100, "audiCar").setDepth(2);
         audiCar.setVisible(false);
-
-        //button click function
-        function actionOnClick() {
-
-        }
 
         //manualButton
         manualButton.setInteractive();
